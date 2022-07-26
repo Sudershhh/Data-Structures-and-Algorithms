@@ -1,30 +1,3 @@
-// let array = [1,2,3,4,5];
-
-// //Append an item to an array
-// array.push(6)  //O(1)
-
-// //Remove the last item from an array
-// array.pop()   //O(1)
-
-// //Add an element to the start of the array
-// array.unshift(0)    //O(N)
-
-// //Remove one element from the start of the array
-// array.shift()       //O(N)
-
-
-
-// //Remove multiple items from the array
-// const fruits = ['Apple', 'Banana', 'Strawberry', 'Mango', 'Cherry'];
-// const start = 2;
-// const removedItems = fruits.splice(start);
-// console.log(fruits);
-// // ["Apple", "Banana"]
-// console.log(removedItems);
-// // ["Strawberry", "Mango", "Cherry"]
-
-
-
 class myArray
 {
     constructor()
@@ -75,4 +48,30 @@ console.log(newArray)
 newArray.push('DBZ')
 newArray.delete(1)
 console.log(newArray)
+
+
+// let array = [1,2,3,4,5];
+
+// //Append an item to an array
+// array.push(6)  //O(1)
+
+// //Remove the last item from an array
+// array.pop()   //O(1)
+
+// //Add an element to the start of the array
+// array.unshift(0)    //O(N)
+
+// //Remove one element from the start of the array
+// array.shift()       //O(N)
+
+
+
+// //Remove multiple items from the array
+// const fruits = ['Apple', 'Banana', 'Strawberry', 'Mango', 'Cherry'];
+// const start = 2;
+// const removedItems = fruits.splice(start);
+// console.log(fruits);
+// // ["Apple", "Banana"]
+// console.log(removedItems);
+// // ["Strawberry", "Mango", "Cherry"]
 
