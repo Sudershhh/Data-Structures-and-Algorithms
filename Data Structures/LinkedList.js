@@ -1,24 +1,25 @@
+class Node
+{
+    constructor(value)
+    {
+        this.value = value
+        this.next = null;
+    }
+}
+
 class LinkedList
 {
-
     constructor(value)
     {
         
-        this.head ={
-            value:value,
-            next:null
-        }
-
+        this.head = new Node(value)
         this.tail = this.head
         this.length=1
     }
 
     append(value)
     {
-        let node = {
-            value,
-            next:null
-        }
+        let node =  new Node(value)
         this.tail.next = node;    
         this.tail = node;
         this.length+=1;
@@ -26,10 +27,8 @@ class LinkedList
 
     prepend(value)
     {
-        let node = {
-            value,
-            next:this.head
-        }
+        let node = new Node(value)
+        node.next = this.head
         this.head = node
         this.length+=1 
     }
@@ -49,11 +48,15 @@ class LinkedList
 
     traverseToIndex(index)
     {
+
+
+
         let currentNode = this.head
-            for(let i=0;i<index-1;i++)
-            {
-                currentNode = currentNode.next
-            }
+        let counter = 0;
+        while(counter !== index){
+            currentNode = currentNode.next;
+            counter++;
+          }
         return currentNode
     }
 
@@ -72,12 +75,8 @@ class LinkedList
         else
         {
 
-            let newNode = {
-                value,
-                next:null
-            }
-
-            let currentNode = this.traverseToIndex(index)    
+            let newNode = new Node(value)
+            let currentNode = this.traverseToIndex(index-1)    
             let subordinate = currentNode.next
             newNode.next = subordinate
             currentNode.next=newNode
@@ -93,11 +92,22 @@ class LinkedList
         {
             this.head= this.head.next
         }
+        else if(index>=this.length-1)
+        {
+            //LAST ELEMENT REMOVAL - ADJUST TAIL
+            console.log('INSIDE FUNCTION')
+            let leadingPointer = this.traverseToIndex(index-1)
+            console.table(leadingPointer)
+            leadingPointer.next = null
+
+            this.tail = leadingPointer;
+        }
         else
         {
-            let leadingPointer= this.traverseToIndex(index)
+            let leadingPointer= this.traverseToIndex(index-1)
             let unWantedNode = leadingPointer.next
             leadingPointer.next = unWantedNode.next
+
         }
         this.length--;
     }
@@ -111,15 +121,13 @@ myLinkedList.append(66)
 myLinkedList.append(3)
 myLinkedList.append(4)
 myLinkedList.append(8)
-myLinkedList.append(0)
-myLinkedList.append(4)
-myLinkedList.append(1)
 myLinkedList.insert(2,1000)
-myLinkedList.insert(3,2000)
-myLinkedList.insert(4,3000)
-myLinkedList.printList()
-myLinkedList.remove(4)
-myLinkedList.remove(1)
-myLinkedList.remove(2)
+// myLinkedList.insert(3,2000)
+// myLinkedList.insert(8,19104)
+// myLinkedList.append(0)
+// myLinkedList.printList()
+myLinkedList.remove(7)
+console.table(myLinkedList)
+// myLinkedList.remove(1)
 myLinkedList.printList()
 // console.log(myLinkedList)
