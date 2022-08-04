@@ -111,23 +111,46 @@ class LinkedList
         }
         this.length--;
     }
+
+
+    reverse()
+    {
+        //mutate the linkedlist
+        let previous = null;
+        let next = null;
+        while(this.head != null)
+        {
+
+            next = this.head.next;
+            this.head.next = previous;
+            previous = this.head;
+            this.head = next;
+        }
+
+        console.table(previous)
+
+    }
 }
 
 
-let myLinkedList = new LinkedList(10)
-myLinkedList.prepend(99)
-myLinkedList.append(11)
-myLinkedList.append(66)
+let myLinkedList = new LinkedList(2)
+myLinkedList.prepend(1)
 myLinkedList.append(3)
 myLinkedList.append(4)
-myLinkedList.append(8)
-myLinkedList.insert(2,1000)
+myLinkedList.append(5)
+myLinkedList.append(6)
+myLinkedList.append(7)
+// myLinkedList.insert(2,1000)
 // myLinkedList.insert(3,2000)
 // myLinkedList.insert(8,19104)
 // myLinkedList.append(0)
 // myLinkedList.printList()
-myLinkedList.remove(7)
-console.table(myLinkedList)
+// myLinkedList.remove(7)
+// console.table(myLinkedList)
 // myLinkedList.remove(1)
-myLinkedList.printList()
 // console.log(myLinkedList)
+myLinkedList.reverse()
+myLinkedList.printList()
+
+
+
