@@ -116,20 +116,48 @@ class LinkedList
     reverse()
     {
         //mutate the linkedlist
-        let previous = null;
-        let next = null;
-        while(this.head != null)
-        {
+        let previousNode = null;
+        let currentNode = this.head
+        let next = currentNode.next;    
 
-            next = this.head.next;
-            this.head.next = previous;
-            previous = this.head;
-            this.head = next;
+        while(currentNode!=null)
+        {
+            currentNode.next = previousNode
+            previousNode = currentNode
+            currentNode = next
+            if(next!=null)
+            {
+                next = next.next
+                this.tail = next
+                continue
+            }
+            this.tail = currentNode
         }
 
-        console.table(previous)
+        this.head = previousNode;
 
     }
+
+    reverseRecursive(node)
+    {
+
+        if(node==this.tail)
+        {
+
+            this.head=this.tail;
+            return; 
+        }
+        console.log('----------------')
+        console.table(node)
+        this.reverseRecursive(node.next)
+
+        this.tail.next=node
+        this.tail=node
+        this.tail.next=null;
+
+
+    }
+
 }
 
 
@@ -137,20 +165,25 @@ let myLinkedList = new LinkedList(2)
 myLinkedList.prepend(1)
 myLinkedList.append(3)
 myLinkedList.append(4)
-myLinkedList.append(5)
-myLinkedList.append(6)
-myLinkedList.append(7)
+
+// let tempNode = myLinkedList.head
+// myLinkedList.reverseRecursive(tempNode)
+// tempNode = myLinkedList.head
+// myLinkedList.reverseRecursive(tempNode)
+myLinkedList.reverse()
+console.table(myLinkedList)
+
+myLinkedList.printList()
+
+
+
+
 // myLinkedList.insert(2,1000)
 // myLinkedList.insert(3,2000)
 // myLinkedList.insert(8,19104)
 // myLinkedList.append(0)
-// myLinkedList.printList()
 // myLinkedList.remove(7)
 // console.table(myLinkedList)
 // myLinkedList.remove(1)
 // console.log(myLinkedList)
-myLinkedList.reverse()
-myLinkedList.printList()
-
-
 
